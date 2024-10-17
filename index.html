@@ -4,8 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vanilla JS SPA</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="pagination.css" />
+    <link rel="stylesheet" href="styles/style.css" />
+    <link rel="stylesheet" href="styles/pagination.css" />
+    <link rel="stylesheet" href="styles/sort_bar.css" />
   </head>
   <body>
     <!-- Navigation Bar -->
@@ -18,10 +19,16 @@
           <li><a href="#/about">About</a></li>
           <li><a href="#/books">Books</a></li>
         </div>
+
+        <!-- Hidden checkbox for toggling the visibility of the search bar -->
+
         <li class="nav-icons">
-          <img src="/contents/SVGs/search.svg" alt="SVG Icon" />
-          <a href="#/wishlist"
-            ><svg
+          <!-- Search icon with a label to toggle the checkbox -->
+          <label for="toggle-search" class="search-icon">
+            <img src="/contents/SVGs/search.svg" alt="SVG Icon" />
+          </label>
+          <a href="#/wishlist">
+            <svg
               width="20px"
               height="20px"
               viewBox="0 0 24 24"
@@ -34,17 +41,44 @@
                 stroke-width="2"
                 stroke-linecap="round"
                 stroke-linejoin="round"
-              /></svg
-          ></a>
+              />
+            </svg>
+          </a>
         </li>
       </ul>
+
+      <input
+        type="checkbox"
+        id="toggle-search"
+        class="toggle-checkbox"
+        hidden
+      />
+      <!-- The div element for search bar, initially hidden -->
+      <div class="sort">
+        <img
+          src="/contents/SVGs/search.svg"
+          alt="search_icon"
+          aria-placeholder="search your book"
+        />
+        <input
+          type="text"
+          name="search"
+          id="search"
+          placeholder="Search for your book ..."
+        />
+        <select>
+          <option value="By the way">BTW</option>
+          <option value="Talk to you later">TTYL</option>
+          <option value="To be honest">TBH</option>
+          <option value=" I don’t know">IDK</option>
+        </select>
+        <div class="results" id="results"></div>
+      </div>
     </nav>
 
     <!-- Content Area -->
 
-    <main id="content">
-      <!-- Page content will be dynamically injected here -->
-    </main>
+    <main id="content"></main>
     <div id="pagination"></div>
 
     <!-- Footer Section -->
@@ -103,5 +137,6 @@
     <script src="JS/app.js"></script>
     <script src="JS/pagination.js"></script>
     <script src="JS/books.js"></script>
+    <script src="JS/search.js"></script>
   </body>
 </html>

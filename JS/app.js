@@ -12,6 +12,11 @@ async function fetchBooks() {
     }
 
     const data = await response.json();
+    if (data) {
+      const books = data.results;
+      // Save books data to localStorage
+      localStorage.setItem("booksData", JSON.stringify(books));
+    }
 
     const itemsPerPage = 8;
     let currentPage = 1;

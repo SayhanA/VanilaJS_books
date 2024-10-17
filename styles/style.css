@@ -40,7 +40,9 @@ nav ul li a:hover {
   text-decoration: underline;
 }
 
-.list {
+.list,
+.sort,
+#results {
   padding: 20px;
   max-width: 900px;
   margin: 0px auto;
