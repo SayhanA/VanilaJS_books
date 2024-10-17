@@ -1,0 +1,23 @@
+#pagination {
+  margin: 40px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+#pagination > button {
+  border: 0;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+#pagination > button:hover {
+  border: 0;
+  cursor: pointer;
+  background-color: rgb(231, 230, 230);
+}
+.active {
+  color: red;
+  cursor: not-allowed;
+}

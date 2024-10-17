@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vanilla JS SPA</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="pagination.css" />
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <nav>
+      <ul class="list">
+        <li>
+          <a href="#/"><h3>Library</h3></a>
+        </li>
+        <div class="nav-list">
+          <li><a href="#/about">About</a></li>
+          <li><a href="#/books">Books</a></li>
+        </div>
+        <li class="nav-icons">
+          <img src="/contents/SVGs/search.svg" alt="SVG Icon" />
+          <a href="#/wishlist"
+            ><svg
+              width="20px"
+              height="20px"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M21 5L19 12H7.37671M20 16H8L6 3H3M9 20C9 20.5523 8.55228 21 8 21C7.44772 21 7 20.5523 7 20C7 19.4477 7.44772 19 8 19C8.55228 19 9 19.4477 9 20ZM20 20C20 20.5523 19.5523 21 19 21C18.4477 21 18 20.5523 18 20C18 19.4477 18.4477 19 19 19C19.5523 19 20 19.4477 20 20Z"
+                stroke="#000000"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              /></svg
+          ></a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Content Area -->
+
+    <main id="content">
+      <!-- Page content will be dynamically injected here -->
+    </main>
+    <div id="pagination"></div>
+
+    <!-- Footer Section -->
+    <footer>
+      <div>
+        <div class="footer-content">
+          <!-- About Section -->
+          <div class="footer-section">
+            <h4>About Book Shop</h4>
+            <p>
+              Welcome to our Book Shop! We offer a vast collection of books
+              across various genres and authors. Discover your next favorite
+              book with us.
+            </p>
+          </div>
+
+          <!-- Useful Links Section -->
+          <div class="footer-section">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><a href="#">Home</a></li>
+              <li><a href="#">Shop</a></li>
+              <li><a href="#">Wishlist</a></li>
+              <li><a href="#">Contact Us</a></li>
+            </ul>
+          </div>
+
+          <!-- Contact Section -->
+          <div class="footer-section">
+            <h4>Contact Us</h4>
+            <p>123 Book Street, Bookville</p>
+            <p>Email: contact@bookshop.com</p>
+            <p>Phone: +123 456 7890</p>
+          </div>
+
+          <!-- Newsletter Section -->
+          <div class="footer-section">
+            <h4>Subscribe to Our Newsletter</h4>
+            <p>Get the latest updates on new arrivals and exclusive offers.</p>
+            <form>
+              <input type="email" placeholder="Your Email" />
+              <br />
+              <button type="submit">Subscribe</button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+          <p>&copy; 2024 Book Shop. All Rights Reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="JS/router.js"></script>
+    <script src="JS/app.js"></script>
+    <script src="JS/pagination.js"></script>
+    <script src="JS/books.js"></script>
+  </body>
+</html>
