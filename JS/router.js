@@ -5,17 +5,28 @@ const routes = {
   "/wishlist": "pages/wishlist.html",
 };
 
+function getPath() {
+  const hash = window.location.hash;
+  const path = hash.replace("#", "").split("?")[0] || "/";
+  const queryString = hash.includes("?") ? hash.split("?")[1] : "";
+  return { path, queryString };
+}
+
 function router() {
-  const path = window.location.hash.replace("#", "") || "/";
+  const { path, queryString } = getPath();
 
   if (routes[path]) {
-    loadPage(routes[path]);
+    if (path === "/books" && queryString.includes("book=")) {
+      loadPage("pages/book-details.html", queryString);
+    } else {
+      loadPage(routes[path]);
+    }
   } else {
     loadPage("pages/404.html");
   }
 }
 
-function loadPage(page) {
+function loadPage(page, queryString = "") {
   const contentDiv = document.getElementById("content");
 
   contentDiv.classList.add("fade-out");
@@ -35,8 +46,8 @@ function loadPage(page) {
 
         setTimeout(() => contentDiv.classList.remove("fade-in"), 500);
 
-        if (page === "pages/books.html") {
-          fetchBooks();
+        if (page === "pages/book-details.html") {
+          loadBookDetails(queryString);
         }
       })
       .catch((error) => {
@@ -47,6 +58,47 @@ function loadPage(page) {
   }, 500);
 }
 
-window.addEventListener("hashchange", router);
+// Function to fetch and display book details
+function loadBookDetails(queryString) {
+  const params = new URLSearchParams(queryString);
+  const bookName = params.get("book");
 
+  if (!bookName) {
+    document.getElementById("content").innerHTML =
+      "<p>Book not found. Please try again.</p>";
+    return;
+  }
+
+  const books = JSON.parse(localStorage.getItem("booksData")) || [];
+  const book = books.find(
+    (b) => b.title.toLowerCase() === decodeURIComponent(bookName).toLowerCase()
+  );
+
+  if (!book) {
+    document.getElementById("content").innerHTML =
+      "<p>Book not found in our records.</p>";
+    return;
+  }
+
+  // Display the book details dynamically
+  const bookDetailsHtml = `
+    <div class="book-details">
+      <img src="${
+        book.formats["image/jpeg"] || "placeholder-image-url.jpg"
+      }" alt="${book.title}" />
+      <h1>${book.title}</h1>
+      <p>Author(s): ${book.authors.map((author) => author.name).join(", ")}</p>
+      <p>ID: ${book.id}</p>
+      <p>Download Count: ${book.download_count}</p>
+      <p>Description: ${
+        book.description || "No description available."
+      }</p> <!-- Assuming 'description' is available -->
+    </div>
+  `;
+
+  document.getElementById("content").innerHTML = bookDetailsHtml;
+}
+
+// Event listeners for routing
+window.addEventListener("hashchange", router);
 window.addEventListener("load", router);

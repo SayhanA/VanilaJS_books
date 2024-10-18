@@ -9,7 +9,7 @@ searchInput.addEventListener("input", function () {
   const query = this.value.toLowerCase();
   console.log({ query });
 
-  resultsContainer.innerHTML = "";
+  // resultsContainer.innerHTML = "";
 
   if (query.length > 0) {
     const books = JSON.parse(localStorage.getItem("booksData"));

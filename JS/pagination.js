@@ -1,5 +1,5 @@
 function displayItems(page, itemsPerPage, data) {
-  const content = document.getElementById("content");
+  const content = document.getElementById("home_content");
   //   content.innerHTML = "";
 
   const start = (page - 1) * itemsPerPage;
@@ -7,7 +7,8 @@ function displayItems(page, itemsPerPage, data) {
 
   console.log({ start, end });
 
-  displayBooks(data.slice(start, end));
+  let books = JSON.parse(localStorage.getItem("booksData"));
+  displayBooks(books.slice(start, end) || data.slice(start, end));
 }
 
 function setupPagination(totalItems, itemsPerPage, currentPage, data) {

@@ -66,11 +66,15 @@
           id="search"
           placeholder="Search for your book ..."
         />
-        <select>
-          <option value="By the way">BTW</option>
-          <option value="Talk to you later">TTYL</option>
-          <option value="To be honest">TBH</option>
-          <option value=" I don’t know">IDK</option>
+        <select id="filterType">
+          <option value="all">All</option>
+          <option value="genre">Genre</option>
+          <option value="type">Type</option>
+        </select>
+
+        <select id="filterOptions">
+          <option value="">Select Genre</option>
+          <!-- Populate genres dynamically -->
         </select>
         <div class="results" id="results"></div>
       </div>
@@ -79,7 +83,10 @@
     <!-- Content Area -->
 
     <main id="content"></main>
-    <div id="pagination"></div>
+    <div class="loading">
+      <div class="spinner"></div>
+    </div>
+    <!-- <div id="pagination"></div> -->
 
     <!-- Footer Section -->
     <footer>
