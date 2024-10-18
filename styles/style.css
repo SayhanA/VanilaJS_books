@@ -70,8 +70,8 @@ main {
 
 .spinner {
   position: absolute;
-  top: 40%;
-  left: 50%;
+  top: 30%;
+  left: 45%;
   transform: translate(-50%, -50%);
   margin: 0;
   border: 8px solid #ebeaea; /* Light grey */
