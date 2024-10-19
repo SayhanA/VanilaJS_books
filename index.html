@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vanilla JS SPA</title>
     <link rel="stylesheet" href="styles/style.css" />
+    <link rel="stylesheet" href="styles/home.css" />
     <link rel="stylesheet" href="styles/pagination.css" />
     <link rel="stylesheet" href="styles/sort_bar.css" />
     <link rel="stylesheet" href="styles/popup-modal.css" />
@@ -15,7 +16,7 @@
     <nav>
       <ul class="list">
         <li>
-          <a href="#/"><h3>Library</h3></a>
+          <a href="#/" id="navgate_home"><h3>Library</h3></a>
         </li>
         <div class="nav-list">
           <li><a href="#/about">About</a></li>
@@ -69,27 +70,30 @@
       />
       <!-- The div element for search bar, initially hidden -->
       <div class="sort">
-        <img
-          src="/contents/SVGs/search.svg"
-          alt="search_icon"
-          aria-placeholder="search your book"
-        />
-        <input
-          type="text"
-          name="search"
-          id="search"
-          placeholder="Search for your book ..."
-        />
-        <select id="filterType">
-          <option value="all">All</option>
-          <option value="genre">Genre</option>
-          <option value="type">Type</option>
-        </select>
-
-        <select id="filterOptions">
-          <option value="">Select Genre</option>
-          <!-- Populate genres dynamically -->
-        </select>
+        <div class="search_bar">
+          <img
+            src="/contents/SVGs/search.svg"
+            alt="search_icon"
+            aria-placeholder="search your book"
+          />
+          <input
+            type="text"
+            name="search"
+            id="search"
+            placeholder="Search for your book ..."
+          />
+        </div>
+        <div class="select_option">
+          <select id="filterOptions">
+            <option value="">Select Genre</option>
+            <!-- Populate genres dynamically -->
+          </select>
+          <select id="filterType">
+            <option value="all">All</option>
+            <option value="genre">Genre</option>
+            <option value="type">Type</option>
+          </select>
+        </div>
         <div class="results" id="results"></div>
       </div>
     </nav>
@@ -100,6 +104,7 @@
     <div class="loading">
       <div class="spinner"></div>
     </div>
+
     <div id="modal"></div>
 
     <!-- Footer Section -->

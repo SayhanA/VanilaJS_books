@@ -7,10 +7,10 @@ function addToWishlist(book) {
 
   if (bookInWishlist) {
     bookInWishlist.quantity += 1;
-    pop_up(`${book.title} quantity increased to ${bookInWishlist.quantity}!`);
+    pop_up(`${book.title} quantity increased to ${bookInWishlist.quantity}`);
   } else {
     wishlist.push({ book, quantity: 1 });
-    pop_up(`${book.title} added to your wishlist!`);
+    pop_up(`${book.title} added to your wishlist`);
   }
 
   localStorage.setItem("wishlist", JSON.stringify(wishlist));
@@ -116,6 +116,6 @@ function removeFromWishlist(bookId) {
     initializeWishlistPage();
     updateCartNumber();
 
-    pop_up("Book removed from your wishlist!", "success");
+    pop_up("Book removed from your wishlist", "success");
   });
 }

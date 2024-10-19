@@ -3,19 +3,28 @@ const apiUrl = "https://gutendex.com/books/";
 const loadingElement = document.getElementsByClassName("loading")[0];
 let booksData = [];
 
+document.getElementById("navgate_home").addEventListener("click", () => {
+  fetchBooks();
+});
+
 async function fetchBooks() {
   try {
     loadingElement.style.display = "block";
-    const response = await fetch(apiUrl);
-    console.log("data response:", response);
 
-    if (!response.ok) {
-      throw new Error("Failed to fetch data from API");
-    }
+    const books = JSON.parse(localStorage.getItem("booksData"));
 
-    const data = await response.json();
-    if (data) {
-      booksData = data.results;
+    if (books) booksData = books;
+
+    if (!books) {
+      const response = await fetch(apiUrl);
+      console.log("data response:", response);
+
+      if (!response.ok) {
+        throw new Error("Failed to fetch data from API");
+      }
+
+      const data = await response.json();
+      booksData = data?.results;
       localStorage.setItem("booksData", JSON.stringify(booksData));
     }
     populateGenreOptions();
@@ -23,12 +32,12 @@ async function fetchBooks() {
     const itemsPerPage = 8;
     let currentPage = 1;
     loadingElement.style.display = "none";
-    displayItems(currentPage, itemsPerPage, booksData);
     setTimeout(() => {
+      displayItems(currentPage, itemsPerPage, booksData);
       let totalItems = booksData.length;
       console.log({ totalItems });
       setupPagination(totalItems, itemsPerPage, currentPage, booksData);
-    }, 100);
+    }, 1000);
   } catch (error) {
     console.error("Error fetching the books:", error);
     document.getElementById(
@@ -77,29 +86,35 @@ document
     }
   });
 
+setTimeout(() => {
+  console.log(document.getElementById("home_content"));
+}, 1000);
+
 function displayBooks(books) {
   console.log({ books });
-  const contentArea = document.getElementById("home_content");
+  setTimeout(() => {
+    const contentArea = document.getElementById("home_content");
 
-  if (!contentArea) {
-    // console.error("Content area not found");
-    return;
-  }
+    if (!contentArea) {
+      // console.error("Content area not found");
+      return;
+    }
 
-  contentArea.innerHTML = "";
+    contentArea.innerHTML = "";
 
-  const booksContainer = document.createElement("div");
-  booksContainer.classList.add("book-list");
+    const booksContainer = document.createElement("div");
+    booksContainer.classList.add("book-list");
 
-  books.forEach((book) => {
-    const bookItem = document.createElement("div");
-    bookItem.classList.add("book-item");
+    books.forEach((book) => {
+      const bookItem = document.createElement("div");
+      bookItem.classList.add("book-item");
 
-    const bookName = encodeURIComponent(book.title);
-    const book_href = `#/books?book=${bookName}`;
+      const bookName = encodeURIComponent(book.title);
+      const book_href = `#/books?book=${bookName}`;
 
-    const imageUrl = book.formats["image/jpeg"] || "placeholder-image-url.jpg";
-    bookItem.innerHTML = `
+      const imageUrl =
+        book.formats["image/jpeg"] || "placeholder-image-url.jpg";
+      bookItem.innerHTML = `
     <button class="add-to-btn" data-id="${book.id}">
         <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"">
           <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
@@ -119,18 +134,19 @@ function displayBooks(books) {
           
       `;
 
-    // bookLink.appendChild(bookItem);
+      // bookLink.appendChild(bookItem);
 
-    booksContainer.appendChild(bookItem);
+      booksContainer.appendChild(bookItem);
 
-    bookItem
-      .querySelector(".add-to-btn")
-      .addEventListener("click", function () {
-        addToWishlist(book);
-      });
-  });
+      bookItem
+        .querySelector(".add-to-btn")
+        .addEventListener("click", function () {
+          addToWishlist(book);
+        });
+    });
 
-  contentArea.appendChild(booksContainer);
+    contentArea.appendChild(booksContainer);
+  }, 1000);
 }
 
 function show(show) {
