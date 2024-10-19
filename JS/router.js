@@ -44,7 +44,12 @@ function loadPage(page, queryString = "") {
         contentDiv.classList.remove("fade-out");
         contentDiv.classList.add("fade-in");
 
-        setTimeout(() => contentDiv.classList.remove("fade-in"), 500);
+        setTimeout(() => contentDiv.classList.remove("fade-in"), 50);
+
+        // Access DOM elements here, after content is loaded
+        if (page === "pages/wishlist.html") {
+          initializeWishlistPage(); // Call a function to handle wishlist logic
+        }
 
         if (page === "pages/book-details.html") {
           loadBookDetails(queryString);

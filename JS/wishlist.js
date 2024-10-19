@@ -114,6 +114,7 @@ function removeFromWishlist(bookId) {
     localStorage.setItem("wishlist", JSON.stringify(wishlist));
 
     initializeWishlistPage();
+    updateCartNumber();
 
     pop_up("Book removed from your wishlist!", "success");
   });
