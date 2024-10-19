@@ -26,8 +26,13 @@ searchInput.addEventListener("input", function () {
 
     if (filteredBooks.length > 0) {
       filteredBooks.forEach((book) => {
-        const bookElement = document.createElement("div");
-        bookElement.classList.add("book");
+        const bookDiv = document.createElement("div");
+        bookDiv.classList.add("book");
+
+        const bookElement = document.createElement("a");
+        const bookName = encodeURIComponent(book.title);
+        bookElement.href = `#/books?book=${bookName}`;
+        bookElement.classList.add("book_title");
 
         const bookTitle = document.createElement("h5");
         bookTitle.textContent = book.title;
@@ -37,8 +42,9 @@ searchInput.addEventListener("input", function () {
         bookAuthor.textContent = `Author(s): ${authors}`;
 
         bookElement.appendChild(bookTitle);
-        bookElement.appendChild(bookAuthor);
-        resultsContainer.appendChild(bookElement);
+        bookDiv.append(bookElement);
+        bookDiv.appendChild(bookAuthor);
+        resultsContainer.appendChild(bookDiv);
       });
     } else {
       resultsContainer.innerHTML = "<p>No books found.</p>";
@@ -46,7 +52,7 @@ searchInput.addEventListener("input", function () {
 
     resultsContainer.style.display = "block";
   } else {
-    resultsContainer.innerHTML = "<p>Please enter a search query.</p>";
+    // resultsContainer.innerHTML = "<p>Please enter a search query.</p>";
     resultsContainer.style.display = "none";
   }
 });

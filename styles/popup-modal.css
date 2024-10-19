@@ -1,0 +1,76 @@
+/* Modal container */
+#modal {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  /* bottom: -100%; */
+  color: white !important;
+  padding: 2px;
+  border-radius: 5px;
+  background-image: repeating-conic-gradient(
+    from -90deg,
+    yellow 0deg 0deg,
+    green 0deg 360deg
+  );
+  /* animation: 6s ease-in-out infinite changeBorders;  */
+  transition: all 2s;
+}
+
+@keyframes changeBorders {
+  0% {
+    background-image: repeating-conic-gradient(
+      from -90deg,
+      yellow 0deg 0deg,
+      green 0deg 360deg
+    );
+  }
+  25% {
+    background-image: repeating-conic-gradient(
+      from -90deg,
+      yellow 0deg 100deg,
+      green 100deg 360deg
+    );
+  }
+  50% {
+    background-image: repeating-conic-gradient(
+      from -90deg,
+      yellow 0deg 200deg,
+      green 200deg 360deg
+    );
+  }
+  75% {
+    background-image: repeating-conic-gradient(
+      from -90deg,
+      yellow 0deg 300deg,
+      green 300deg 360deg
+    );
+  }
+  100% {
+    background-image: repeating-conic-gradient(
+      from -90deg,
+      yellow 0deg 0deg,
+      green 0deg 360deg
+    );
+  }
+}
+
+#modal p {
+  /* color: white; */
+}
+
+.popup_modal {
+  padding: 5px 20px;
+  box-shadow: 10px 10px 50px rgba(0, 0, 0, 0.747);
+  background-color: white;
+  border: 0;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.check_icon {
+  width: 25px;
+  height: 25px;
+}
