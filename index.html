@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="styles/pagination.css" />
     <link rel="stylesheet" href="styles/sort_bar.css" />
     <link rel="stylesheet" href="styles/popup-modal.css" />
+    <link rel="stylesheet" href="styles/wishlist.css" />
   </head>
   <body>
     <!-- Navigation Bar -->
@@ -18,7 +19,6 @@
         </li>
         <div class="nav-list">
           <li><a href="#/about">About</a></li>
-          <li><a href="#/books">Books</a></li>
         </div>
 
         <!-- Hidden checkbox for toggling the visibility of the search bar -->
@@ -30,8 +30,9 @@
           </label>
           <a href="#/wishlist">
             <svg
-              width="20px"
-              height="20px"
+              id="cartIcon"
+              width="20"
+              height="22"
               viewBox="0 0 24 24"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -43,6 +44,18 @@
                 stroke-linecap="round"
                 stroke-linejoin="round"
               />
+              <!-- Add a <text> element inside the SVG for dynamic numbers -->
+              <text
+                id="cartNumber"
+                x="13"
+                y="9"
+                text-anchor="middle"
+                font-size="15"
+                fill="blue"
+                font-family="Arial, sans-serif"
+              >
+                0
+              </text>
             </svg>
           </a>
         </li>
@@ -143,10 +156,9 @@
 
     <script src="JS/router.js"></script>
     <script src="JS/app.js"></script>
+    <script src="JS/wishlist.js"></script>
     <script src="JS/popup.js"></script>
     <script src="JS/pagination.js"></script>
-    <script src="JS/books.js"></script>
     <script src="JS/search.js"></script>
-    <script src="JS/wishlist.js"></script>
   </body>
 </html>

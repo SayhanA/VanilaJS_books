@@ -1,0 +1,46 @@
+#wishlist-content {
+  /* padding: 0%;
+  margin: 0;
+  border: 0;
+  box-shadow: none; */
+  overflow: auto;
+}
+
+#wishlist-content table {
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+  overflow: auto;
+}
+
+#wishlist-content table td {
+  padding: 20px 10px;
+  border-bottom: 1px solid gainsboro;
+  text-wrap: wrap;
+}
+
+#wishlist-content table tr:last-child {
+  border-bottom: 0;
+}
+
+#wishlist-content table img {
+  width: 70px;
+  height: 100px;
+}
+
+.remote_button {
+  width: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: red;
+  border: 0;
+  border-radius: 5px;
+  padding: 5px 3px;
+  cursor: pointer;
+}
+
+.remote_button svg {
+  padding: 2px;
+  color: white;
+}

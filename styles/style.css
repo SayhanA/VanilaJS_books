@@ -42,6 +42,7 @@ nav ul li a:hover {
 
 .list,
 .sort,
+#wishlist-content,
 #results {
   padding: 20px;
   max-width: 900px;

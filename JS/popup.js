@@ -37,3 +37,59 @@ function pop_up(content, status = "success") {
     }, 2000);
   }, 4000);
 }
+
+function deleteModal(onConfirm) {
+  document.body.style.overflow = "hidden";
+
+  const overlay = document.createElement("div");
+  overlay.classList.add("modal_overlay");
+
+  const createModalElement = document.createElement("div");
+  createModalElement.classList.add("delete_modal");
+
+  createModalElement.innerHTML = `
+    <button type="button" class="remove_svg">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+      <path stroke-linecap="round" stroke-linejoin="round" d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+    </svg>
+
+    <h2> Are you sure? </h2>
+    <p>Do you really want to delete this record? This process cannot be undone.</p>
+
+    <div id="confirm_buttons">
+      <button type="button" id="btn_cancel">Cancel</button>
+      <button type="button" id="btn_delete">Delete</button>
+    </div>
+  `;
+
+  document.body.appendChild(overlay);
+  document.body.appendChild(createModalElement);
+
+  document.body.style.backgroundColor = "#00000060";
+  document.body.style.transition = "all 0.5s";
+
+  document.getElementById("btn_cancel").addEventListener("click", () => {
+    closeModal(createModalElement, overlay);
+  });
+
+  document.getElementById("btn_delete").addEventListener("click", () => {
+    closeModal(createModalElement, overlay);
+    onConfirm();
+  });
+
+  document.querySelector(".remove_svg").addEventListener("click", () => {
+    closeModal(createModalElement, overlay);
+  });
+
+  function closeModal(modal, overlay) {
+    document.body.removeChild(modal);
+    document.body.removeChild(overlay);
+    document.body.style.overflow = "";
+    document.body.style.backgroundColor = "";
+  }
+}

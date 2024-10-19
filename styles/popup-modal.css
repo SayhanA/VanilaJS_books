@@ -74,3 +74,83 @@
   width: 25px;
   height: 25px;
 }
+
+.delete_modal {
+  width: 300px;
+  height: 350px;
+  box-shadow: 5px 5px 20px black;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+  gap: 25px;
+}
+
+.delete_modal svg {
+  width: 80px;
+  height: 80px;
+  color: red;
+  text-align: center;
+}
+
+.delete_modal p {
+  font-size: 13px;
+  width: 80%;
+  text-align: center;
+  color: rgba(128, 128, 128, 0.884);
+}
+
+.delete_modal button {
+  width: 100px;
+  padding: 8px 0;
+  border-radius: 5px;
+  border: 0;
+  cursor: pointer;
+}
+
+.delete_modal .confirm_buttons button:hover {
+  width: 100px;
+  padding: 8px 0;
+  border-radius: 5px;
+  border: 0;
+  cursor: pointer;
+  scale: 1.1;
+  transition: all 0.2s ease;
+}
+
+.delete_modal #btn_cancel {
+  background-color: rgb(199, 198, 198);
+  color: white;
+  margin-right: 10px;
+}
+
+.delete_modal #btn_delete {
+  background-color: rgb(255, 0, 0);
+  color: white;
+}
+
+.delete_modal .remove_svg {
+  width: 30px;
+  height: 30px;
+  padding: 5px;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  cursor: pointer;
+  transition: all;
+}
+
+.delete_modal .remove_svg svg {
+  /* width: 30px;
+  height: 30px;
+  padding: 5px; */
+  width: 20px;
+  height: 20px;
+  color: gray;
+}

@@ -82,7 +82,7 @@ function displayBooks(books) {
   const contentArea = document.getElementById("home_content");
 
   if (!contentArea) {
-    console.error("Content area not found");
+    // console.error("Content area not found");
     return;
   }
 
@@ -109,7 +109,7 @@ function displayBooks(books) {
         <img class="book-img" src="${imageUrl}" alt="${book.title}" />
         <div class="book_content">
         <a href=${book_href}>
-          <h5>${book.title}</h5>
+          <h5>${book.title.slice(0, 50)}</h5>
           </a>
           <p>Author: ${
             book.authors.map((author) => author.name).join(", ") || "Unknown"
@@ -141,3 +141,12 @@ function show(show) {
 // pagination functions
 
 fetchBooks();
+
+function updateCartNumber(number) {
+  console.log({ number });
+  const cartNumber = document.getElementById("cartNumber");
+  cartNumber.textContent = number;
+}
+
+// Example: Update the cart number to 5
+updateCartNumber(JSON.parse(localStorage.getItem("wishlist")).length);
