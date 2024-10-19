@@ -9,7 +9,8 @@ searchInput.addEventListener("input", function () {
   const query = this.value.toLowerCase();
   console.log({ query });
 
-  // resultsContainer.innerHTML = "";
+  // Clear previous search results
+  resultsContainer.innerHTML = "";
 
   if (query.length > 0) {
     const books = JSON.parse(localStorage.getItem("booksData"));
@@ -45,14 +46,17 @@ searchInput.addEventListener("input", function () {
         bookDiv.append(bookElement);
         bookDiv.appendChild(bookAuthor);
         resultsContainer.appendChild(bookDiv);
+
+        // Add event listener to hide resultsContainer when a link is clicked
+        bookElement.addEventListener("click", function () {
+          resultsContainer.style.display = "none";
+        });
       });
     } else {
       resultsContainer.innerHTML = "<p>No books found.</p>";
     }
-
     resultsContainer.style.display = "block";
   } else {
-    // resultsContainer.innerHTML = "<p>Please enter a search query.</p>";
     resultsContainer.style.display = "none";
   }
 });

@@ -4,7 +4,7 @@ function loadBookDetails(queryString) {
   const bookName = params.get("book");
 
   if (!bookName) {
-    document.getElementById("content").innerHTML =
+    document.getElementById("book-details-container").innerHTML =
       "<p>Book not found. Please try again.</p>";
     return;
   }
@@ -15,10 +15,12 @@ function loadBookDetails(queryString) {
   );
 
   if (!book) {
-    document.getElementById("content").innerHTML =
+    document.getElementById("book-details-container").innerHTML =
       "<p>Book not found in our records.</p>";
     return;
   }
+
+  getRelatedBooks(book, books);
 
   const downloads = book.download_count;
   let rating = 0;
@@ -71,7 +73,7 @@ function loadBookDetails(queryString) {
     </div>
   `;
 
-  document.getElementById("content").innerHTML = bookDetailsHtml;
+  document.getElementById("book-details-container").innerHTML = bookDetailsHtml;
 }
 
 function generateStarRating(rating) {
@@ -90,4 +92,42 @@ function generateStarRating(rating) {
     }
   }
   return starHtml;
+}
+
+function getRelatedBooks(currentBook, allBooks) {
+  const currentBookSubjects = currentBook.subjects || [];
+  const currentBookBookshelves = currentBook.bookshelves || [];
+
+  const relatedBooks = allBooks.filter((book) => {
+    if (book.id === currentBook.id) return false; // Exclude the current book itself
+
+    const hasRelatedSubject = book.subjects.some((subject) =>
+      currentBookSubjects.includes(subject)
+    );
+    const hasRelatedBookshelf = book.bookshelves.some((bookshelf) =>
+      currentBookBookshelves.includes(bookshelf)
+    );
+
+    return hasRelatedSubject || hasRelatedBookshelf;
+  });
+  renderRelatedBooks(relatedBooks.slice(0, 4));
+  return relatedBooks;
+}
+
+function renderRelatedBooks(relatedBooks) {
+  const container = document.getElementById("related_books");
+  relatedBooks.forEach((book) => {
+    const bookName = encodeURIComponent(book.title);
+    const book_href = `#/books?book=${bookName}`;
+    const bookElement = document.createElement("div");
+    bookElement.classList.add("related-book");
+
+    bookElement.innerHTML = `
+        <img src="${book.formats["image/jpeg"]}" alt="${book.title} cover">
+        <p>${book.title}</p>
+        <a href=${book_href}>View Details</a>
+      `;
+
+    container.appendChild(bookElement);
+  });
 }

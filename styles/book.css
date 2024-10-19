@@ -49,3 +49,65 @@
   color: white;
   flex-grow: 1;
 }
+
+.related-books-container {
+  display: flex;
+  overflow-x: auto; /* Allows horizontal scrolling */
+  gap: 20px;
+  padding-bottom: 10px;
+}
+
+.related-book {
+  min-width: 150px; /* Set a minimum width for each book */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.related-book img {
+  width: 100px;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.related-book p {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.related_books_heading {
+  font-weight: bold;
+  font-size: 18px;
+  margin: 20px 0;
+}
+
+.related-book a {
+  text-decoration: none;
+  color: #007bff;
+}
+
+.related-book a:hover {
+  text-decoration: underline;
+}
+
+/* Optional: Hide horizontal scrollbar (for better aesthetics) */
+.related-books-container::-webkit-scrollbar {
+  display: none;
+}
+
+#related_books {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 10px;
+}
+
+#related_books > div {
+  width: 150px;
+  flex-grow: 1;
+}
