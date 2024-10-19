@@ -63,47 +63,6 @@ function loadPage(page, queryString = "") {
   }, 500);
 }
 
-// Function to fetch and display book details
-function loadBookDetails(queryString) {
-  const params = new URLSearchParams(queryString);
-  const bookName = params.get("book");
-
-  if (!bookName) {
-    document.getElementById("content").innerHTML =
-      "<p>Book not found. Please try again.</p>";
-    return;
-  }
-
-  const books = JSON.parse(localStorage.getItem("booksData")) || [];
-  const book = books.find(
-    (b) => b.title.toLowerCase() === decodeURIComponent(bookName).toLowerCase()
-  );
-
-  if (!book) {
-    document.getElementById("content").innerHTML =
-      "<p>Book not found in our records.</p>";
-    return;
-  }
-
-  // Display the book details dynamically
-  const bookDetailsHtml = `
-    <div class="book-details">
-      <img src="${
-        book.formats["image/jpeg"] || "placeholder-image-url.jpg"
-      }" alt="${book.title}" />
-      <h1>${book.title}</h1>
-      <p>Author(s): ${book.authors.map((author) => author.name).join(", ")}</p>
-      <p>ID: ${book.id}</p>
-      <p>Download Count: ${book.download_count}</p>
-      <p>Description: ${
-        book.description || "No description available."
-      }</p> <!-- Assuming 'description' is available -->
-    </div>
-  `;
-
-  document.getElementById("content").innerHTML = bookDetailsHtml;
-}
-
 // Event listeners for routing
 window.addEventListener("hashchange", router);
 window.addEventListener("load", router);

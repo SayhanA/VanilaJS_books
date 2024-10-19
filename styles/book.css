@@ -1,0 +1,51 @@
+.book-details {
+  min-width: 300px;
+  margin: 20px 0;
+}
+
+.book_img {
+  margin: 0 auto;
+  padding: 0 0 50px 0;
+  width: 300px;
+  height: 400px;
+}
+
+.book-details > div {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 50px;
+}
+
+.book-details > div > div {
+  width: 40%;
+  min-width: 300px;
+  flex-grow: 1;
+}
+
+.book-details h2 {
+  /* margin-bottom: 20px; */
+}
+
+.ratings {
+  margin-bottom: 20px;
+}
+
+.downloads {
+  padding: 20px 0;
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  gap: 20px;
+}
+
+.book-details a {
+  /* width: 100%; */
+  min-width: 200px;
+  text-align: center;
+  display: block;
+  border-radius: 10px;
+  padding: 20px;
+  background-image: linear-gradient(to right, blue, rgb(119, 0, 255));
+  color: white;
+  flex-grow: 1;
+}

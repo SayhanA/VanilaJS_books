@@ -200,3 +200,15 @@ footer .footer-bottom {
     margin: 0 5px;
   }
 }
+
+@media only screen and (max-width: 898px) {
+  #content {
+    padding: 0 15px;
+  }
+}
+
+@media only screen and (max-width: 766px) {
+  #content {
+    padding: 0 0;
+  }
+}
