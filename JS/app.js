@@ -142,11 +142,12 @@ function show(show) {
 
 fetchBooks();
 
-function updateCartNumber(number) {
-  console.log({ number });
+function updateCartNumber() {
+  const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
   const cartNumber = document.getElementById("cartNumber");
-  cartNumber.textContent = number;
+
+  cartNumber.textContent = wishlist.length;
 }
 
-// Example: Update the cart number to 5
-updateCartNumber(JSON.parse(localStorage.getItem("wishlist")).length);
+// Initialize the cart number on page load
+window.addEventListener("load", updateCartNumber);

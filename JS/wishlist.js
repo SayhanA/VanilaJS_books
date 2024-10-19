@@ -14,6 +14,7 @@ function addToWishlist(book) {
   }
 
   localStorage.setItem("wishlist", JSON.stringify(wishlist));
+  updateCartNumber();
 }
 
 function initializeWishlistPage() {

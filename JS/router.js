@@ -1,6 +1,7 @@
 const routes = {
   "/": "pages/home.html",
   "/about": "pages/about.html",
+  "/books": "pages/books.html",
   "/wishlist": "pages/wishlist.html",
 };
 
@@ -43,11 +44,7 @@ function loadPage(page, queryString = "") {
         contentDiv.classList.remove("fade-out");
         contentDiv.classList.add("fade-in");
 
-        setTimeout(() => contentDiv.classList.remove("fade-in"), 50);
-
-        if (page === "pages/wishlist.html") {
-          initializeWishlistPage();
-        }
+        setTimeout(() => contentDiv.classList.remove("fade-in"), 500);
 
         if (page === "pages/book-details.html") {
           loadBookDetails(queryString);
